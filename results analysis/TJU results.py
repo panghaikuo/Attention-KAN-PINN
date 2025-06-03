@@ -1,9 +1,3 @@
-'''
-TJU数据集的结果分析
-
-English:
-    This file is used to analyze the results of the TJU dataset.
-'''
 import pandas as pd
 import numpy as np
 import os
