@@ -1,9 +1,3 @@
-'''
-MIT数据集的结果分析
-
-English:
-    This file is used to analyze the results of the MIT dataset.
-'''
 import pandas as pd
 import numpy as np
 import os
