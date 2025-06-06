@@ -7,7 +7,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 def get_args():
     parser = argparse.ArgumentParser('Hyper Parameters for TJU dataset')
-    parser.add_argument('--data', type=str, default='MyTJU', help='XJTU, HUST, MIT, MyTJU')
+    parser.add_argument('--data', type=str, default='MyTJU', help='MyTJU')
     parser.add_argument('--in_same_batch', type=bool, default=True, help='训练集和测试集是否在同一个batch中(whether train and test sets are in the same batch)')
     parser.add_argument('--train_batch', type=int, default=0, choices=[-1,0,1,2],
                         help='如果是-1，读取全部数据，并随机划分训练集和测试集;否则，读取对应的batch数据'
