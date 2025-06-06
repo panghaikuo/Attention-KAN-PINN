@@ -23,12 +23,12 @@ def get_args():
 
     # scheduler related
     parser.add_argument('--epochs', type=int, default=200, help='epoch')
-    parser.add_argument('--early_stop', type=int, default=15, help='early stop')
+    parser.add_argument('--early_stop', type=int, default=25, help='early stop')
     parser.add_argument('--warmup_epochs', type=int, default=20, help='warmup epoch')
-    parser.add_argument('--warmup_lr', type=float, default=2e-2, help='warmup lr')
-    parser.add_argument('--lr', type=float, default=1e-2, help='learning rate')
-    parser.add_argument('--final_lr', type=float, default=2e-4, help='final lr')
-    parser.add_argument('--lr_F', type=float, default=1e-2, help='lr of F')
+    parser.add_argument('--warmup_lr', type=float, default=1e-4, help='warmup lr')
+    parser.add_argument('--lr', type=float, default=3e-5, help='learning rate')
+    parser.add_argument('--final_lr', type=float, default=2e-6, help='final lr')
+    parser.add_argument('--lr_F', type=float, default=1e-5, help='learning rate of F')
 
     # model related
     parser.add_argument('--u_layers_num', type=int, default=3, help='the layers num of u')
@@ -43,7 +43,7 @@ def get_args():
                         help='loss = self.lambda1 * loss1 + self.lambda2 * loss2 + self.lambda3 * loss3 + self.l2_lambda * l2_reg')
     parser.add_argument('--lambda3', type=float, default=1e-2,
                         help='loss = self.lambda1 * loss1 + self.lambda2 * loss2 + self.lambda3 * loss3 + self.l2_lambda * l2_reg')
-    parser.add_argument('--l2_lambda', type=float, default=1e-8, help='L2 regularization coefficient')
+    parser.add_argument('--l2_lambda', type=float, default=1e-5, help='L2 regularization coefficient')
 
     parser.add_argument('--log_dir', type=str, default='logging.txt', help='log dir, if None, do not save')
     parser.add_argument('--save_folder', type=str, default='MyTJU results', help='save folder')
