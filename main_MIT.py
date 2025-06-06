@@ -28,13 +28,13 @@ def get_args():
     parser.add_argument('--F_hidden_dim', type=int, default=60, help='the hidden dim of F')
 
     # loss related
-    parser.add_argument('--lambda1', type=float, default=5,
+    parser.add_argument('--lambda1', type=float, default=1,
                         help='loss = self.lambda1 * loss1 + self.lambda2 * loss2 + self.lambda3 * loss3 + self.l2_lambda * l2_reg')
     parser.add_argument('--lambda2', type=float, default=0.6,
                         help='loss = self.lambda1 * loss1 + self.lambda2 * loss2 + self.lambda3 * loss3 + self.l2_lambda * l2_reg')
-    parser.add_argument('--lambda3', type=float, default=3e-2,
+    parser.add_argument('--lambda3', type=float, default=1e-2,
                         help='loss = self.lambda1 * loss1 + self.lambda2 * loss2 + self.lambda3 * loss3 + self.l2_lambda * l2_reg')
-    parser.add_argument('--l2_lambda', type=float, default=1e-6, help='L2 regularization coefficient')
+    parser.add_argument('--l2_lambda', type=float, default=1e-5, help='L2 regularization coefficient')
     parser.add_argument('--log_dir', type=str, default='logging.txt', help='log dir, if None, do not save')
     parser.add_argument('--save_folder', type=str, default='MIT results', help='save folder')
 
@@ -61,16 +61,6 @@ def load_MyMIT_data(args):
     dataloader = {'train':trainloader['train_2'],'valid':trainloader['valid_2'],'test':testloader['test_3']}
 
     return dataloader
-# def main():
-#     args = get_args()
-#     for e in range(10):
-#         setattr(args, 'save_folder', f'My-MIT_Attention results/hyperparameter analysis/lambda123/Experiment{e + 1}')
-#         if not os.path.exists(args.save_folder):
-#             os.makedirs(args.save_folder)
-#
-#         dataloader = load_MyMIT_data(args)
-#         pinn = PINN(args)
-#         pinn.Train(trainloader=dataloader['train'],validloader=dataloader['valid'],testloader=dataloader['test'])
 def main():
     args = get_args()
 
