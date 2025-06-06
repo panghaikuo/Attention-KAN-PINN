@@ -7,9 +7,9 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 def get_args():
     parser = argparse.ArgumentParser('Hyper Parameters for MIT dataset')
-    parser.add_argument('--data', type=str, default='MyMIT', help='XJTU, HUST, MyMIT, TJU,MIT')
+    parser.add_argument('--data', type=str, default='MyMIT', help='MyMIT, TJU')
     parser.add_argument('--batch_size', type=int, default=512, help='batch size')
-    parser.add_argument('--normalization_method', type=str, default='min-max', help='min-max,z-score')
+    parser.add_argument('--normalization_method', type=str, default='min-max', help='min-max')
 
     # scheduler related
     parser.add_argument('--epochs', type=int, default=200, help='epoch')
@@ -42,7 +42,7 @@ def get_args():
 
     return args
 
-def load_MyMIT_data(args,small_sample=None):
+def load_MyMIT_data(args):
     root = 'Battery-dataset-preprocessing-code-library-main/My data/MIT data'
     train_list = []
     test_list = []
@@ -55,8 +55,6 @@ def load_MyMIT_data(args,small_sample=None):
                 test_list.append(os.path.join(batch_root,f))
             else:
                 train_list.append(os.path.join(batch_root,f))
-    if small_sample is not None:
-        train_list = train_list[:small_sample]
     data = MyMITdata(root=root,args=args)
     trainloader = data.read_all(specific_path_list=train_list)
     testloader = data.read_all(specific_path_list=test_list)
