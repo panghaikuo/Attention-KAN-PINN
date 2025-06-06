@@ -7,7 +7,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 def get_args():
     parser = argparse.ArgumentParser('Hyper Parameters for MIT dataset')
-    parser.add_argument('--data', type=str, default='MyMIT', help='XJTU, HUST, MyMIT, TJU,MIT')
+    parser.add_argument('--data', type=str, default='MyMIT', help='MyMIT')
     parser.add_argument('--batch_size', type=int, default=512, help='batch size')
     parser.add_argument('--normalization_method', type=str, default='min-max', help='min-max')
 
