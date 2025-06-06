@@ -63,16 +63,6 @@ def load_MyMIT_data(args,small_sample=None):
     dataloader = {'train':trainloader['train_2'],'valid':trainloader['valid_2'],'test':testloader['test_3']}
 
     return dataloader
-# def main():
-#     args = get_args()
-#     for e in range(10):
-#         setattr(args, 'save_folder', f'My-MIT_Attention results/hyperparameter analysis/lambda123/Experiment{e + 1}')
-#         if not os.path.exists(args.save_folder):
-#             os.makedirs(args.save_folder)
-#
-#         dataloader = load_MyMIT_data(args)
-#         pinn = PINN(args)
-#         pinn.Train(trainloader=dataloader['train'],validloader=dataloader['valid'],testloader=dataloader['test'])
 def main():
     args = get_args()
 
