@@ -53,7 +53,7 @@ def get_args():
     return args
 
 
-def load_TJU_data(args,small_sample=None):
+def load_TJU_data(args):
     root = 'data/TJU data'
     data = MyTJUdata(root=root, args=args)
     train_list = []
@@ -75,8 +75,6 @@ def load_TJU_data(args,small_sample=None):
                 print(f)
             else:
                 train_list.append(os.path.join(batch_root,f))
-        if small_sample is not None:
-            train_list = train_list[:small_sample]
         train_loader = data.read_all(specific_path_list=train_list)
         test_loader = data.read_all(specific_path_list=test_list)
         dataloader = {'train': train_loader['train_2'],
@@ -115,21 +113,6 @@ def main():
             dataloader = load_TJU_data(args)
             pinn = PINN(args)
             pinn.Train(trainloader=dataloader['train'], validloader=dataloader['valid'], testloader=dataloader['test'])
-
-def small_sample():
-    args = get_args()
-    num_battery = 2
-    batch = 2
-    for e in range(10):
-        setattr(args,'in_same_batch',True)
-        setattr(args,'batch',batch)
-        setattr(args,'save_folder',f'results/TJU results (small sample {num_battery})/{batch}-{batch}/Experiment{e+1}')
-        setattr(args, 'batch_size', 128)
-        if not os.path.exists(args.save_folder):
-            os.makedirs(args.save_folder)
-        dataloader = load_TJU_data(args,small_sample=num_battery)
-        pinn = PINN(args)
-        pinn.Train(trainloader=dataloader['train'], validloader=dataloader['valid'], testloader=dataloader['test'])
 
 if __name__ == '__main__':
     main()
